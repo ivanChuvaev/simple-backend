@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+  <link rel="stylesheet" href="main.css">
+  <title>Document</title>
+</head>
+<body>
+  <form class="form" onsubmit="handleSubmit(event)">
+    <div class="links">
+      <a href="register.html">register</a>
+    </div>
+    <label class="top-header" >LOGIN</label>
+    <div>
+      <label for="login">Login</label>
+      <input required name="login" id="login">
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input required name="password" id="password">
+    </div>
+    <button type="submit">send</button>
+  </form>
+  <div id="response"></div>
+</body>
+
+<script>
+  const log = (message) => document.querySelector('#response').innerHTML = message
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const login = e.target.querySelector('#login').value
+    const password = e.target.querySelector('#password').value
+    fetch(
+      '/user/login',
+      {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({ login, password }),
+      }
+    ).then(async res => {
+      log(JSON.stringify(await res.json(), ' ', 4))
+    }).catch(e => {
+      log(e.message)
+    })
+  }
+</script>
+</html>
