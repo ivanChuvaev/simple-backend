@@ -3,6 +3,6 @@ import path from 'path'
 
 export default async (app: Express) => {
   app.get('/', async (req: Request, res: Response) => {
-    res.sendFile(path.resolve(process.cwd(), 'public/register.html'))
+    res.sendFile(path.resolve(process.cwd(), 'public/sign-in.html'))
   })
 }

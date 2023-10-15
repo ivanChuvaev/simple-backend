@@ -1,8 +1,8 @@
 import path from 'path'
 import cors from 'cors'
 import express from 'express'
-import initializeControllers from '@controllers'
-import initializeModels from '@models'
+import initializeControllers from '@/controllers'
+import initializeModels from '@/models'
 import env from "global/env";
 import seq from "global/seq";
 

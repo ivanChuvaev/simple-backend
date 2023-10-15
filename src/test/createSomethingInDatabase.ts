@@ -1,4 +1,4 @@
-import { Algorithm, Cryptocurrency, GPU, Graph, Miner, Session, User } from "@models";
+import { Algorithm, Cryptocurrency, GPU, Graph, Miner, Session, User } from "@/models";
 import seq from "global/seq";
 
 export const createSomethingInDatabase = async () => {

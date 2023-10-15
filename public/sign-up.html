@@ -10,9 +10,9 @@
 <body>
   <form class="form" onsubmit="handleSubmit(event)">
     <div class="links">
-      <a href="register.html">register</a>
+      <a href="sign-in.html">Sign Up</a>
     </div>
-    <label class="top-header" >LOGIN</label>
+    <label class="top-header" >REGISTER</label>
     <div>
       <label for="login">Login</label>
       <input required name="login" id="login">
@@ -33,7 +33,7 @@
     const login = e.target.querySelector('#login').value
     const password = e.target.querySelector('#password').value
     fetch(
-      '/user/login',
+      '/auth/sign-up',
       {
         method: 'POST',
         headers: {
@@ -42,7 +42,11 @@
         body: JSON.stringify({ login, password }),
       }
     ).then(async res => {
-      log(JSON.stringify(await res.json(), ' ', 4))
+      if (res.status === 200) {
+        log('user registered')
+      } else {
+        log(JSON.stringify(await res.json(), ' ', 4))
+      }
     }).catch(e => {
       log(e.message)
     })

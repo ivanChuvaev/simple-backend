@@ -1,4 +1,4 @@
-import { Algorithm, AlgorithmMiner } from "@models";
+import { Algorithm, AlgorithmMiner } from "@/models";
 import { InferAttributes } from "sequelize";
 import { AllowNull, BelongsToMany, Column, DataType, Model, Table, Validate } from "sequelize-typescript";
 

@@ -1,4 +1,4 @@
-import { Session, User } from '@models'
+import { Session, User } from '@/models'
 import { Express, Request, Response } from 'express'
 
 export default async (app: Express) => {

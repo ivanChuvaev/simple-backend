@@ -1,6 +1,6 @@
 import { InferAttributes } from "sequelize"
 import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript"
-import { User } from "@models"
+import { User } from "@/models"
 import dayjs from "dayjs"
 
 @Table({ tableName: 'session' })

@@ -1,6 +1,6 @@
 import { InferAttributes } from "sequelize"
 import { Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript"
-import { Algorithm, Miner } from "@models"
+import { Algorithm, Miner } from "@/models"
 
 type CreationProps = {
   algorithmId: string

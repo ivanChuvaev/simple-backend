@@ -1,4 +1,4 @@
-import { Session, User } from '@models'
+import { Session, User } from '@/models'
 import { Express, Request, Response } from 'express'
 import { Schema, checkSchema, validationResult } from 'express-validator'
 
@@ -16,7 +16,7 @@ const schema: Schema = {
 }
 
 export default async (app: Express) => {
-  app.post('/user/login', checkSchema(schema), async (req: Request, res: Response) => {
+  app.post('/auth/sign-in', checkSchema(schema), async (req: Request, res: Response) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.status(400);

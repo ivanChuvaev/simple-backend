@@ -1,6 +1,6 @@
 import { InferAttributes } from "sequelize";
 import { BelongsToMany, Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
-import { AlgorithmMiner, Cryptocurrency, Miner } from "@models";
+import { AlgorithmMiner, Cryptocurrency, Miner } from "@/models";
 
 type CreationProps = {
   type: 'cpu' | 'gpu' | 'harddrive'

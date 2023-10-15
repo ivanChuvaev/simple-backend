@@ -1,7 +1,7 @@
 import { InferAttributes } from "sequelize"
 import { BeforeSave, BeforeUpdate, BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript"
-import { Cryptocurrency, GPU, Harddrive } from "@models"
-import { CPU } from "@models"
+import { Cryptocurrency, GPU, Harddrive } from "@/models"
+import { CPU } from "@/models"
 
 type CreationProps = {
   hashrate: number

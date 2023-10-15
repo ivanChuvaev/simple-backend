@@ -1,4 +1,4 @@
-import { Algorithm } from "@models";
+import { Algorithm } from "@/models";
 import { InferAttributes } from "sequelize";
 import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 

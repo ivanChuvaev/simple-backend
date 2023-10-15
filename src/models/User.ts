@@ -1,6 +1,6 @@
 import { InferAttributes } from "sequelize"
 import { AllowNull, AutoIncrement, BeforeCreate, Column, DataType, HasMany, Model, PrimaryKey, Table } from "sequelize-typescript"
-import { Session } from "@models"
+import { Session } from "@/models"
 import bcrypt from 'bcrypt'
 
 type CreationProps = {

@@ -1,7 +1,7 @@
-import { Cryptocurrency, Miner, Wallet } from "@models";
+import { Cryptocurrency, Miner, Wallet } from "@/models";
 import { InferAttributes } from "sequelize";
 import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
-import { Pool } from "@models";
+import { Pool } from "@/models";
 
 type CreationProps = {
   name: string
