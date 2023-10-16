@@ -2,7 +2,7 @@ import { Sequelize } from 'sequelize-typescript'
 import env from "./env";
 
 const seq = new Sequelize({
-  logging: false,
+  // logging: false,
   database: env.DB_NAME,
   username: env.DB_USERNAME,
   password: env.DB_PASSWORD,

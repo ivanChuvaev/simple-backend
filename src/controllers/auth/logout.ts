@@ -1,13 +1,29 @@
-import { Session, User } from '@/models'
-import { Express, Request, Response } from 'express'
+import { RefreshToken, User } from '@/models'
+import { Request, Response, Router } from 'express'
+import { Schema, checkSchema } from 'express-validator'
 
-export default async (app: Express) => {
-  app.post('/user/login', async (req: Request, res: Response) => {
-    const sessionId = req.header('sessionId')
-    if (sessionId !== undefined) {
-      await Session.destroy({ where: { sessionId }})
+type ReqBody = {
+  data: {
+    refreshToken: string
+  }
+}
+
+const schema: Schema = {
+  'data': {
+    exists: {
+      errorMessage: '"data" is not provided'
     }
-    User.findOne({ where: { }})
+  },
+  'data.refreshToken': {
+    exists: {
+      errorMessage: 'refresh token must be provided'
+    }
+  }
+}
+
+export default async (app: Router) => {
+  app.get('/auth/logout', checkSchema(schema), async (req: Request<any,any,ReqBody>, res: Response) => {
+    await RefreshToken.destroy({ where: { token: req.body.data.refreshToken }})
     res.sendStatus(200);
   })
 }

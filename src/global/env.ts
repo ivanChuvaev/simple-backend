@@ -14,12 +14,14 @@ const envArr = [
   'DB_DIALECT',
   'DB_HOST',
   'DB_PORT',
-  'DB_TIMEZONE'
+  'DB_TIMEZONE',
+  'SECRET_KEY'
 ] as const
 
 type ENVType = Record<typeof envArr[number], string> & {
   DB_DIALECT: Dialect
 }
+
 
 for (const key of envArr) {
   if (tmpENV[key] === undefined) {

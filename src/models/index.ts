@@ -1,5 +1,4 @@
 export { default as User } from './User'
-export { default as Session } from './Session'
 export { default as Wallet } from './Wallet'
 export { default as Cryptocurrency } from './Cryptocurrency'
 export { default as Algorithm } from './Algorithm'
@@ -10,6 +9,7 @@ export { default as GPU } from './GPU'
 export { default as CPU } from './CPU'
 export { default as Graph } from './Graph'
 export { default as Pool } from './Pool'
+export { default as RefreshToken } from './RefreshToken'
 import { Sequelize } from 'sequelize-typescript'
 import requireAll from 'require-all'
 

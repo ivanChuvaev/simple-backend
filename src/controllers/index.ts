@@ -1,7 +1,7 @@
-import { Express } from 'express'
+import { Router } from 'express'
 import requireAll from 'require-all'
 
-function flattenRequireAll(modules: any): Array<(app: Express) => void> {
+function flattenRequireAll(modules: any): Array<(router: Router) => void> {
   const flattened = [];
 
   for (const key in modules) {
@@ -17,7 +17,7 @@ function flattenRequireAll(modules: any): Array<(app: Express) => void> {
   return flattened;
 }
 
-export default (app: Express) => {
+export default (router: Router) => {
   const controllers = requireAll({
     dirname: __dirname,
     filter: /^(?!index\.ts).*\.ts$/,
@@ -25,6 +25,6 @@ export default (app: Express) => {
   })
 
   flattenRequireAll(controllers).forEach(makeControllerFunction => {
-    makeControllerFunction(app)
+    makeControllerFunction(router)
   })
 }

@@ -1,10 +1,10 @@
 import { InferAttributes } from "sequelize"
-import { AllowNull, AutoIncrement, BeforeCreate, Column, DataType, HasMany, Model, PrimaryKey, Table } from "sequelize-typescript"
-import { Session } from "@/models"
+import { BeforeCreate, Column, DataType, HasMany, Model, Table } from "sequelize-typescript"
+import { RefreshToken } from "@/models"
 import bcrypt from 'bcrypt'
 
 type CreationProps = {
-  login: string
+  email: string
   password: string
 }
 
@@ -23,30 +23,20 @@ export default class User extends Model<InferAttributes<User>, CreationProps> {
     unique: true,
     allowNull: false,
     validate: {
-      is: {
-        args: /^[a-zа-я\d_]*$/i,
-        msg: 'login can only be consists of case insensitive latin characters, digits and underscores'
-      },
-      len: {
-        args: [3, 50],
-        msg: 'login length must be between 3 and 50'
-      },
-      isStartWithCharacterOrUnderscore(value: string) {
-        if (value.search(/^[a-zа-я_]/i) === -1) {
-          throw new Error('login must starts with word character or underscore')
-        }
+      isEmail: {
+        msg: 'invalid email'
       }
     }
   })
-  login!: string
+  email!: string
 
   @Column({
     type: DataType.STRING(100),
     allowNull: false,
     validate: {
       len: {
-        args: [8, 50],
-        msg: 'password length must be between 8 and 50'
+        args: [4, 50],
+        msg: 'password length must be between 4 and 50'
       },
       hasNumber(value: string) {
         if (value.search(/\d/) === -1) {
@@ -72,8 +62,8 @@ export default class User extends Model<InferAttributes<User>, CreationProps> {
   })
   password!: string
 
-  @HasMany(() => Session)
-  sessions!: Session[]
+  @HasMany(() => RefreshToken)
+  refreshTokens!: RefreshToken[]
 
   @BeforeCreate
   private static async passwordHook(user: User) {
